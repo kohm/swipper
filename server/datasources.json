@@ -3,11 +3,4 @@
     "name": "db",
     "connector": "memory"
   }
-  "mongo": {
-      "name": "mongo",
-      "connector": "mongodb",
-      "database": "swipper",
-      "host": "127.0.0.1",
-      "port": "27017"
-  }
 }
