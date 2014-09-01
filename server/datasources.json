@@ -2,15 +2,5 @@
   "db": {
     "name": "db",
     "connector": "memory"
-  },
-  "mongo": {
-      "name": "mongo",
-      "connector": "mongodb",
-      "database": "swipper2",
-      "username": "admin",
-      "password": "ETQ6q-88Q5yX",
-      "host": 127.13.31.2,
-      "port": 27017
-
   }
 }
