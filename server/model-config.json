@@ -1,0 +1,47 @@
+{
+  "_meta": {
+    "sources": [
+      "../common/models",
+      "./models"
+    ]
+  },
+  "User": {
+    "dataSource": "mongo"
+  },
+  "AccessToken": {
+    "public": false,
+    "dataSource": "mongo"
+  },
+  "ACL": {
+    "public": false,
+    "dataSource": "mongo"
+  },
+  "RoleMapping": {
+    "public": false,
+    "dataSource": "mongo"
+  },
+  "Role": {
+    "public": false,
+    "dataSource": "mongo"
+  },
+  "place": {
+    "public": true,
+    "dataSource": "mongo"
+  },
+  "city": {
+    "public": true,
+    "dataSource": "mongo"
+  },
+  "category": {
+    "public": true,
+    "dataSource": "mongo"
+  },
+  "state": {
+    "public": true,
+    "dataSource": "mongo"
+  },
+  "country": {
+    "public": true,
+    "dataSource": "mongo"
+  }
+}

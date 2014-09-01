@@ -1,0 +1,21 @@
+{
+  "name": "category",
+  "plural": "categories",
+  "base": "PersistedModel",
+  "properties": {
+    "Name": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+      "places": {
+          "type": "hasMany",
+          "model": "place",
+          "foreignKey": "categoryId"
+      }
+  },
+  "acls": [],
+  "methods": []
+}

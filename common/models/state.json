@@ -1,0 +1,26 @@
+{
+  "name": "state",
+  "plural": "states",
+  "base": "PersistedModel",
+  "properties": {
+    "Name": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "cities": {
+        "type": "hasMany",
+        "model": "city",
+        "foreignKey": "stateId"
+    },
+    "country": {
+      "type": "belongsTo",
+      "model": "country",
+      "foreignKey": "countryId"
+    }
+  },
+  "acls": [],
+  "methods": []
+}

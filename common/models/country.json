@@ -1,0 +1,21 @@
+{
+  "name": "country",
+  "plural": "countries",
+  "base": "PersistedModel",
+  "properties": {
+    "Name": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "states": {
+      "type": "hasMany",
+      "model": "state",
+      "foreignKey": "countryId"
+    }
+  },
+  "acls": [],
+  "methods": []
+}
