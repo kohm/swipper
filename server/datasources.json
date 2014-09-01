@@ -2,12 +2,12 @@
   "db": {
     "name": "db",
     "connector": "memory"
-  }
+  },
   "mongo": {
       "name": "mongo",
       "connector": "loopback-connector-mongodb",
       "database": "swipper2",
-      "user": "admin",
+      "username": "admin",
       "password" : "7vTrTiC35fpv",
       "host": "127.12.221.130",
       "port": "27017"
