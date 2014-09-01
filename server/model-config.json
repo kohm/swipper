@@ -6,42 +6,42 @@
     ]
   },
   "User": {
-    "dataSource": "db"
+    "dataSource": "mongo"
   },
   "AccessToken": {
     "public": false,
-    "dataSource": "db"
+    "dataSource": "mongo"
   },
   "ACL": {
     "public": false,
-    "dataSource": "db"
+    "dataSource": "mongo"
   },
   "RoleMapping": {
     "public": false,
-    "dataSource": "db"
+    "dataSource": "mongo"
   },
   "Role": {
     "public": false,
-    "dataSource": "db"
+    "dataSource": "mongo"
   },
   "place": {
     "public": true,
-    "dataSource": "db"
+    "dataSource": "mongo"
   },
   "city": {
     "public": true,
-    "dataSource": "db"
+    "dataSource": "mongo"
   },
   "category": {
     "public": true,
-    "dataSource": "db"
+    "dataSource": "mongo"
   },
   "state": {
     "public": true,
-    "dataSource": "db"
+    "dataSource": "mongo"
   },
   "country": {
     "public": true,
-    "dataSource": "db"
+    "dataSource": "mongo"
   }
 }
