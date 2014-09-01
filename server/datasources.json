@@ -6,9 +6,11 @@
   "mongo": {
       "name": "mongo",
       "connector": "mongodb",
-      "database": "swipper",
-      "host": "127.0.0.1",
-      "port": "27017"
+      "database": "swipper",ls
+      "username": process.env.OPENSHIFT_MONGODB_DB_USERNAME,
+      "password": process.env.OPENSHIFT_MONGODB_DB_PASSWORD,
+      "host": process.env.OPENSHIFT_MONGODB_DB_HOST,
+      "port": process.env.OPENSHIFT_MONGODB_DB_PORT
 
   }
 }
