@@ -1,15 +1,18 @@
-//{lat:-23, lng:-23}
+var GeoPoint = require('loopback').GeoPoint;
 module.exports = function(Place){
-
-    Place.nearBy = function(location, radius, cb) {
-        Place.find({limit: 3}, cb);
-        //cb(null, 'Greetings... ');
+    Place.nearBy = function(northWest, southEast, cb) {
+        var NW = new GeoPoint(JSON.parse(northWest));
+        var SE = new GeoPoint(JSON.parse(southEast));
+        Place.find({where: {and: [{'Location.lat': {between: [SE.lat,NW.lat]}}, {'Location.lng': {between: [NW.lng,SE.lng]}}]}, limit:50},function (err,result){
+            console.log(result);
+            cb(err,result);
+        });
     }
 
     Place.remoteMethod(
         'nearBy',
         {
-            accepts: [{arg: 'location', type: 'geopoint'},{arg: 'radius', type: 'number'}],
+            accepts: [{arg: 'northWest', type: 'GeoPoint'},{arg: 'southEast', type: 'GeoPoint'}],
             returns: {arg: 'places', type: [Place]},
             http: {verb: 'get'}
         }
