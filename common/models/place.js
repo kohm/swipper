@@ -13,8 +13,7 @@ module.exports = function(Place){
         'nearBy',
         {
             accepts: [{arg: 'northWest', type: 'GeoPoint'},{arg: 'southEast', type: 'GeoPoint'}],
-            returns: {arg: 'places', type: [Place], root: true},
-            http: {verb: 'get'}
+            returns: {arg: 'places', type: [Place], root: true}
         }
     );
 };
