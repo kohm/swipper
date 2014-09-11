@@ -7,13 +7,13 @@ module.exports = function(Place){
             console.log(result);
             cb(err,result);
         });
-    }
+    };
 
     Place.remoteMethod(
         'nearBy',
         {
             accepts: [{arg: 'northWest', type: 'GeoPoint'},{arg: 'southEast', type: 'GeoPoint'}],
-            returns: {arg: 'places', type: [Place]},
+            returns: {arg: 'places', type: [Place], root: true},
             http: {verb: 'get'}
         }
     );
