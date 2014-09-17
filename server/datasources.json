@@ -7,9 +7,9 @@
       "name": "mongo",
       "connector": "loopback-connector-mongodb",
       "database": "swipper",
-      "username": "",
-      "password" : "",
-      "host": "127.0.0.1",
+      "username": "admin",
+      "password" : "7vTrTiC35fpv",
+      "host": "127.12.221.130",
       "port": "27017"
   }
 }
