@@ -7,7 +7,7 @@ var Place = app.models.place;
 var Category = app.models.category;
 
 var request = require("request");
-var url = "https://drive.google.com/uc?export=download&id=0B7dv4nAWOUhtLTdISEl0TDBaWVU";
+var url = "https://drive.google.com/uc?export=download&id=0B7dv4nAWOUhtTW9qVXFFaGdzWUE";
 var readJson = function(callback){
     request({
         url: url,
@@ -28,7 +28,7 @@ function processLocation(loc, callback) {
     if (loc) {
         Country.findOne({where: {Name: loc.Country}}, function (err, result) {
             if (!result) {
-                var cou = {"Name": loc.Argentina};
+                var cou = {"Name": loc.Country};
                 Country.create(cou, function (err, result) {
                     if (!err) {
                         console.log("Se creo el pais " + loc.Country);
@@ -61,9 +61,29 @@ function processLocation(loc, callback) {
         callback();
     }
 }
+var toTitleCase = function(str){
+
+    return str.replace(/\w\S*/g, function(txt){
+        return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+    });
+
+};
+
+var normalize = function(collection) {
+    collection.forEach(function(each){
+        each.Name = toTitleCase(each.Name);
+        each.Address = toTitleCase(each.Address);
+        each.Category = toTitleCase(each.Category);
+        each.City = toTitleCase(each.City);
+        each.State = toTitleCase(each.State);
+        each.Country = toTitleCase(each.Country);
+
+    });
+};
 dataSource.automigrate('place', function (err){
     readJson(function(data){
         locations = data;
+        normalize(locations);
         locationCount = locations.length;
         processLocation(locations.shift(), function() {
             console.log("done");
