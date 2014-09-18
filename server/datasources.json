@@ -9,7 +9,7 @@
       "database": "swipper",
       "username": "admin",
       "password" : "B8aZNC_wC2fL",
-      "host": "127.12.221.130",
+      "host": "127.12.191.2",
       "port": "27017"
   }
 }
