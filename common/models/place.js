@@ -3,7 +3,18 @@ module.exports = function(Place){
     Place.nearBy = function(northWest, southEast, cb) {
         var NW = new GeoPoint(JSON.parse(northWest));
         var SE = new GeoPoint(JSON.parse(southEast));
-        Place.find({where: {and: [{'Location.lat': {between: [SE.lat,NW.lat]}}, {'Location.lng': {between: [NW.lng,SE.lng]}}]}, limit:50},function (err,result){
+        Place.find({
+            fields: {
+                id: true,
+                Name:true,
+                Location: true,
+                categoryId:true,
+                cityId: true
+            },
+            where: {
+                and: [
+                    {'Location.lat': {between: [SE.lat,NW.lat]}},{'Location.lng': {between: [NW.lng,SE.lng]}}]}, limit:50
+        },function (err,result){
             console.log(result);
             cb(err,result);
         });
