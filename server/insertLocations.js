@@ -11,7 +11,7 @@ var url = "https://drive.google.com/uc?export=download&id=0B7dv4nAWOUhtTW9qVXFFa
 var readJson = function(callback){
     request({
         url: url,
-        json: true,
+        json: true
         //proxy: "http://proxy.corp.globant.com:3128"
     }, function (error, response, body) {
         if (!error && response.statusCode === 200) {
