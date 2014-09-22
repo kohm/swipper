@@ -13,7 +13,7 @@ module.exports = function(Place){
             },
             where: {
                 and: [
-                    {'Location.lat': {between: [SE.lat,NW.lat]}},{'Location.lng': {between: [NW.lng,SE.lng]}}]}, limit:50
+                    {'Location.lat': {between: [SE.lat,NW.lat]}},{'Location.lng': {between: [NW.lng,SE.lng]}}]}, limit:200
         },function (err,result){
             console.log(result);
             cb(err,result);
