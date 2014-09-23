@@ -7,6 +7,7 @@ module.exports = function(Place){
             fields: {
                 id: true,
                 Name:true,
+                Address:true,
                 Location: true,
                 categoryId:true,
                 cityId: true
