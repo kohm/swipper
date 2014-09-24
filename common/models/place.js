@@ -4,13 +4,16 @@ module.exports = function(Place){
         var NW = new GeoPoint(JSON.parse(northWest));
         var SE = new GeoPoint(JSON.parse(southEast));
         Place.find({
+            include:{city:['state']},
             fields: {
                 id: true,
-                Name:true,
-                Address:true,
-                Location: true,
-                categoryId:true,
-                cityId: true
+                "Name":true,
+                "Address":true,
+                "Location": true,
+                "categoryId":true,
+                "cityId": true,
+                "city.Name":true
+
             },
             where: {
                 and: [
