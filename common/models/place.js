@@ -48,16 +48,21 @@ module.exports = function(Place){
             console.log(result);
 
             parameters = {
-                location:[-27.472177, -58.808674],
-                name:"inmENZO bar"
+                location:[result.Location.lat, result.Location.lng],
+                name: result.Name
             };
             googlePlaces.placeSearch(parameters, function (response) {
                 //console.log(response.results[0]);
 
                 googlePlaces.placeDetailsRequest({reference:response.results[0].reference}, function (response) {
-                    result.reviews = response.result.reviews;
-                    result.photos = response.result.photos;
-                    cb(err,result);
+                    if (response.status === 'OK'){
+                        if (response.result.opening_hours){
+                            result.opening_hours = response.result.opening_hours
+                        }
+                        result.reviews = response.result.reviews;
+                        result.photos = response.result.photos;
+                        cb(err,result);
+                    }
                 });
 
             });
