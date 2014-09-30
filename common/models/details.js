@@ -12,8 +12,7 @@ parameters = {
     name:"hotel colon"
 };
 googlePlaces.placeSearch(parameters, function (response) {
-    console.log(response);
-    /*googlePlaces.placeDetailsRequest({reference:response.results[0].reference}, function (response) {
+    googlePlaces.placeDetailsRequest({reference:response.results[0].reference}, function (response) {
         console.log(response.result);
-    });*/
+    });
 });
