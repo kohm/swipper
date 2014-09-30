@@ -1,4 +1,13 @@
 var GeoPoint = require('loopback').GeoPoint;
+
+
+var config = require("./config.js");
+var GooglePlaces = require("googleplaces");
+var googlePlaces = new GooglePlaces(config.apiKey, config.outputFormat);
+var parameters;
+/**
+ * Place details requests - https://developers.google.com/places/documentation/#PlaceDetails
+ */
 module.exports = function(Place){
     Place.nearBy = function(northWest, southEast, cb) {
         var NW = new GeoPoint(JSON.parse(northWest));
@@ -31,4 +40,36 @@ module.exports = function(Place){
             returns: {arg: 'places', type: [Place], root: true}
         }
     );
+
+    /* OBTENER PLACE CON DETALLES DE LA API GOOGLE PLACES*/
+
+    Place.details = function(idPlace, cb) {
+        Place.findById(idPlace, function(err,result){
+            console.log(result);
+
+            parameters = {
+                location:[-27.472177, -58.808674],
+                name:"inmENZO bar"
+            };
+            googlePlaces.placeSearch(parameters, function (response) {
+                //console.log(response.results[0]);
+
+                googlePlaces.placeDetailsRequest({reference:response.results[0].reference}, function (response) {
+                    result.reviews = response.result.reviews;
+                    result.photos = response.result.photos;
+                    cb(err,result);
+                });
+
+            });
+        });
+    };
+
+    Place.remoteMethod(
+        'details',
+        {
+            accepts: [{arg: 'idPlace', type: 'string'}],
+            returns: {arg: 'place', type: 'string', root: true}
+        }
+    );
+
 };
