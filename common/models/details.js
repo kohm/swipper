@@ -13,6 +13,6 @@ parameters = {
 };
 googlePlaces.placeSearch(parameters, function (response) {
     googlePlaces.placeDetailsRequest({reference:response.results[0].reference}, function (response) {
-        console.log(response.result);
+        console.log(response.result.periods);
     });
 });
