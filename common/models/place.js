@@ -59,6 +59,11 @@ module.exports = function(Place){
                         if (response.result.opening_hours){
                             result.opening_hours = response.result.opening_hours
                         }
+                        if (response.result.website){
+                            result.url = response.result.website;
+                        }else if(response.result.url){
+                            result.url = response.result.url
+                        }
                         result.reviews = response.result.reviews;
                         result.photos = response.result.photos;
                         cb(err,result);
