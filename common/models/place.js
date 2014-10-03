@@ -44,8 +44,21 @@ module.exports = function(Place){
 
                 googlePlaces.placeDetailsRequest({reference:response.results[0].reference}, function (response) {
                     if (response.status === 'OK'){
-                        if (response.result.opening_hours){
-                            result.opening_hours = response.result.opening_hours
+                        if (response.result.opening_hours.periods){
+                            var horarios = response.result.opening_hours.periods;
+                            var horarios_count = horarios.length;
+                            var horarios_formated = ["Close today","Close today","Close today","Close today","Close today","Close today","Close today"];
+                            for (var i = 0; i < horarios_count ; i++){
+                                if (horarios_formated[horarios[i].open.day] === "Close today"){
+                                    horarios_formated[horarios[i].open.day] = [horarios[i].open.time.slice(0,2),":",horarios[i].open.time.slice(2)].join('') +"-"+
+                                        [horarios[i].close.time.slice(0,2),":",horarios[i].close.time.slice(2)].join('');
+                                }else{
+                                    horarios_formated[horarios[i].open.day] = horarios_formated[horarios[i].open.day] + " " + [horarios[i].open.time.slice(0,2),":",horarios[i].open.time.slice(2)].join('') +
+                                        "-"+
+                                        [horarios[i].close.time.slice(0,2),":",horarios[i].close.time.slice(2)].join('');
+                                }
+                            }
+                            result.opening_hours = horarios_formated;
                         }
                         result.reviews = response.result.reviews;
                         result.photos = response.result.photos;
