@@ -27,21 +27,5 @@
   "place": {
     "public": true,
     "dataSource": "mongo"
-  },
-  "city": {
-    "public": true,
-    "dataSource": "mongo"
-  },
-  "category": {
-    "public": true,
-    "dataSource": "mongo"
-  },
-  "state": {
-    "public": true,
-    "dataSource": "mongo"
-  },
-  "country": {
-    "public": true,
-    "dataSource": "mongo"
   }
 }
