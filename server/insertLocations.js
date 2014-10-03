@@ -62,6 +62,16 @@ var createPlace = function (location,callback){
     if (location.Category === "Lodging Small"){
         location.Category = "Lodging"
     }
+    switch(location.Category) {
+        case "Lodging Small":
+            location.Category = "Lodging";
+            break;
+        case "Gas Stations":
+            location.Category = "Gas";
+            break;
+        case "Restaurants":
+            location.Category = "Food";
+    }
     Place.create({
         "Name": location.Name,
         "Address": location.Address,
