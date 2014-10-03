@@ -1,37 +1,38 @@
 {
-  "name": "place",
-  "plural": "places",
-  "base": "PersistedModel",
-  "properties": {
-    "Name": {
-      "type": "string",
-      "required": true
+    "name": "place",
+    "plural": "places",
+    "base": "PersistedModel",
+    "properties": {
+        "Name": {
+            "type": "string",
+            "required": true
+        },
+        "Address": {
+            "type": "string",
+            "required": true
+        },
+        "Phone": {
+            "type": "string"
+        },
+        "Location": {
+            "type": "geopoint",
+            "required": true
+        },
+        "City": {
+            "type": "string",
+            "required": true
+        },
+        "State": {
+            "type": "string",
+            "required": true
+        },
+        "Country": {
+            "type": "string",
+            "required": true
+        }
     },
-    "Address": {
-      "type": "string",
-      "required": true
-    },
-    "Phone": {
-      "type": "string"
-    },
-    "Location": {
-      "type": "geopoint",
-      "required": true
-    }
-  },
-  "validations": [],
-  "relations": {
-    "category": {
-      "type": "belongsTo",
-      "model": "category",
-      "foreignKey": "categoryId"
-    },
-    "city": {
-      "type": "belongsTo",
-      "model": "city",
-      "foreignKey": "cityId"
-    }
-  },
-  "acls": [],
-  "methods": []
+    "validations": [],
+    "relations": {},
+    "acls": [],
+    "methods": []
 }

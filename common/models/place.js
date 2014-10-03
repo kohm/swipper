@@ -13,17 +13,6 @@ module.exports = function(Place){
         var NW = new GeoPoint(JSON.parse(northWest));
         var SE = new GeoPoint(JSON.parse(southEast));
         Place.find({
-            include:{city:['state']},
-            fields: {
-                id: true,
-                "Name":true,
-                "Address":true,
-                "Location": true,
-                "categoryId":true,
-                "cityId": true,
-                "city.Name":true
-
-            },
             where: {
                 and: [
                     {'Location.lat': {between: [SE.lat,NW.lat]}},{'Location.lng': {between: [NW.lng,SE.lng]}}]}, limit:200
@@ -52,7 +41,6 @@ module.exports = function(Place){
                 name: result.Name
             };
             googlePlaces.placeSearch(parameters, function (response) {
-                //console.log(response.results[0]);
 
                 googlePlaces.placeDetailsRequest({reference:response.results[0].reference}, function (response) {
                     if (response.status === 'OK'){
