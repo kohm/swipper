@@ -52,13 +52,21 @@ module.exports = function(Place){
                                 var horarios_count = horarios.length;
                                 var horarios_formated = ["Close today", "Close today", "Close today", "Close today", "Close today", "Close today", "Close today"];
                                 for (var i = 0; i < horarios_count; i++) {
-                                    if (horarios_formated[horarios[i].open.day] === "Close today") {
-                                        horarios_formated[horarios[i].open.day] = [horarios[i].open.time.slice(0, 2), ":", horarios[i].open.time.slice(2)].join('') + "-" +
-                                            [horarios[i].close.time.slice(0, 2), ":", horarios[i].close.time.slice(2)].join('');
-                                    } else {
-                                        horarios_formated[horarios[i].open.day] = horarios_formated[horarios[i].open.day] + " " + [horarios[i].open.time.slice(0, 2), ":", horarios[i].open.time.slice(2)].join('') +
-                                            "-" +
-                                            [horarios[i].close.time.slice(0, 2), ":", horarios[i].close.time.slice(2)].join('');
+                                    if (horarios[i].open && horarios[i].close) {
+                                        if (horarios_formated[horarios[i].open.day] === "Close today") {
+                                            horarios_formated[horarios[i].open.day] = [horarios[i].open.time.slice(0, 2), ":", horarios[i].open.time.slice(2)].join('') + "-" +
+                                                [horarios[i].close.time.slice(0, 2), ":", horarios[i].close.time.slice(2)].join('');
+                                        } else {
+                                            horarios_formated[horarios[i].open.day] = horarios_formated[horarios[i].open.day] + " " + [horarios[i].open.time.slice(0, 2), ":", horarios[i].open.time.slice(2)].join('') +
+                                                "-" +
+                                                [horarios[i].close.time.slice(0, 2), ":", horarios[i].close.time.slice(2)].join('');
+                                        }
+                                    }else if (horarios[i].open){
+                                        if (horarios_formated[horarios[i].open.day] === "Close today") {
+                                            horarios_formated[horarios[i].open.day] = [horarios[i].open.time.slice(0, 2), ":", horarios[i].open.time.slice(2)].join('');
+                                        } else {
+                                            horarios_formated[horarios[i].open.day] = horarios_formated[horarios[i].open.day] + " " + [horarios[i].open.time.slice(0, 2), ":", horarios[i].open.time.slice(2)].join('');
+                                        }
                                     }
                                 }
                                 result.opening_hours = horarios_formated;

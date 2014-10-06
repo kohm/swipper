@@ -8,8 +8,8 @@ var parameters;
  * Place details requests - https://developers.google.com/places/documentation/#PlaceDetails
  */
 parameters = {
-    location:[ -38.7207648, -62.2632232],
-    name:'Bambu Canting'
+    location:[ -31.4180339, -64.181442],
+    name:'Azur Real Hotel Boutique'
 };
 googlePlaces.placeSearch(parameters, function (response) {
     if (response.status === "OK") {
