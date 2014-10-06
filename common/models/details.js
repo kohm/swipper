@@ -8,11 +8,15 @@ var parameters;
  * Place details requests - https://developers.google.com/places/documentation/#PlaceDetails
  */
 parameters = {
-    location:[-27.450458,-58.98377],
-    name:"hotel colon"
+    location:[ -38.7207648, -62.2632232],
+    name:'Bambu Canting'
 };
 googlePlaces.placeSearch(parameters, function (response) {
-    googlePlaces.placeDetailsRequest({reference:response.results[0].reference}, function (response) {
-        console.log(response.result.periods);
-    });
+    if (response.status === "OK") {
+        googlePlaces.placeDetailsRequest({reference: response.results[0].reference}, function (response) {
+            console.log(response.result.opening_hours.periods);
+        });
+    }else{
+        console.log(response);
+    }
 });
