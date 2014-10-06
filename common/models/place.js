@@ -50,10 +50,10 @@ module.exports = function(Place){
                             if (response.result.opening_hours.periods) {
                                 var horarios = response.result.opening_hours.periods;
                                 var horarios_count = horarios.length;
-                                var horarios_formated = ["Close today", "Close today", "Close today", "Close today", "Close today", "Close today", "Close today"];
+                                var horarios_formated = ["Closed today", "Closed today", "Closed today", "Closed today", "Closed today", "Closed today", "Closed today"];
                                 for (var i = 0; i < horarios_count; i++) {
                                     if (horarios[i].open && horarios[i].close) {
-                                        if (horarios_formated[horarios[i].open.day] === "Close today") {
+                                        if (horarios_formated[horarios[i].open.day] === "Closed today") {
                                             horarios_formated[horarios[i].open.day] = [horarios[i].open.time.slice(0, 2), ":", horarios[i].open.time.slice(2)].join('') + "-" +
                                                 [horarios[i].close.time.slice(0, 2), ":", horarios[i].close.time.slice(2)].join('');
                                         } else {
@@ -62,7 +62,7 @@ module.exports = function(Place){
                                                 [horarios[i].close.time.slice(0, 2), ":", horarios[i].close.time.slice(2)].join('');
                                         }
                                     }else if (horarios[i].open){
-                                        if (horarios_formated[horarios[i].open.day] === "Close today") {
+                                        if (horarios_formated[horarios[i].open.day] === "Closed today") {
                                             horarios_formated[horarios[i].open.day] = [horarios[i].open.time.slice(0, 2), ":", horarios[i].open.time.slice(2)].join('');
                                         } else {
                                             horarios_formated[horarios[i].open.day] = horarios_formated[horarios[i].open.day] + " " + [horarios[i].open.time.slice(0, 2), ":", horarios[i].open.time.slice(2)].join('');
