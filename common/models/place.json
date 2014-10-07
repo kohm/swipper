@@ -18,6 +18,10 @@
             "type": "geopoint",
             "required": true
         },
+        "Category": {
+            "type": "string",
+            "required": true
+        },
         "City": {
             "type": "string",
             "required": true
