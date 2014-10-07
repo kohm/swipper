@@ -72,6 +72,12 @@ module.exports = function(Place){
                                 result.opening_hours = horarios_formated;
                             }
                         }
+
+                        if (response.result.url){
+                            result.url = response.result.url
+                        }else if (response.result.website){
+                            result.url = response.result.website
+                        }
                         result.reviews = response.result.reviews;
                         result.photos = response.result.photos;
                         cb(err,result);
