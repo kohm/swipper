@@ -104,7 +104,7 @@ module.exports = function(Place){
         page = page || 0;
 
         Place.find({
-            where: {Location:{near:here}},
+            where: {Location:{nearSphere:here}},
             skip: limit * page,
             limit: limit
         }, cb);
