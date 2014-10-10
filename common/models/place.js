@@ -122,4 +122,30 @@ module.exports = function(Place){
             http: { verb: 'GET' }
         }
     );
+    Place.loadMore = function(here, cb) {
+        here = new GeoPoint(JSON.parse(here));
+        Place.find({
+            where : {Location:{near:here}},
+            limit: 100
+        }, function(err,result){
+            console.log(result);
+            var result_count = result.length;
+            for (var i=0;i<result_count;i++){
+                console.log(result[i].Location);
+                result[i].distance = GeoPoint.distanceBetween(here, result[i].Location, {type:'kilometers'});
+            }
+            cb(err,result);
+        });
+    };
+    Place.remoteMethod(
+        'loadMore',
+        {
+            accepts:[
+                {arg: 'here', type: 'GeoPoint', required: true,
+                    description: 'geo location (lng & lat)'}
+            ],
+            returns: {arg: 'locations', root: true},
+            http: { verb: 'GET' }
+        }
+    );
 };
