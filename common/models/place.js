@@ -103,7 +103,10 @@ module.exports = function(Place){
         var limit = 10;
         page = page || 0;
         Place.find({
-            where:{ and:[{Category:{inq:categories}},{Location:{near:here}}]},
+            where:{ and:[
+                {Category:{inq:categories}},
+                {Location:{near:here}}
+            ]},
             skip: limit * page,
             limit: limit
         }, cb);
