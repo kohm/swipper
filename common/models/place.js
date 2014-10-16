@@ -98,13 +98,12 @@ module.exports = function(Place){
     );
 
     /*  LOAD MORE METHOD  */
-    Place.storedBy = function(here, page, cb) {
+    Place.storedBy = function(here, categories, page, cb) {
         here = new GeoPoint(JSON.parse(here));
         var limit = 10;
         page = page || 0;
-
         Place.find({
-            where: {Location:{near:here}},
+            where:{ and:[{Category:{inq:categories}},{Location:{near:here}}]},
             skip: limit * page,
             limit: limit
         }, cb);
@@ -115,11 +114,13 @@ module.exports = function(Place){
             accepts:[
                 {arg: 'here', type: 'GeoPoint', required: true,
                     description: 'geo location (lng & lat)'},
+                {arg: 'categories', type: 'array', required: true,
+                    description: 'List of categories'},
                 {arg: 'page', type: 'Number',
                     description: 'number of pages (page size=10)'}
             ],
             returns: {arg: 'locations', root: true},
-            http: { verb: 'GET' }
+            http: { verb: 'POST' }
         }
     );
     Place.loadMore = function(here, cb) {
