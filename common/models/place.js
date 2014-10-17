@@ -98,8 +98,7 @@ module.exports = function(Place){
     );
 
     /*  LOAD MORE METHOD  */
-    /**
-     * Place.storedBy = function(here, categories, page, cb) {
+    Place.storedBy = function(here, categories, page, cb) {
         here = new GeoPoint(JSON.parse(here));
         var limit = 10;
         page = page || 0;
@@ -126,7 +125,8 @@ module.exports = function(Place){
             returns: {arg: 'locations', root: true},
             http: { verb: 'POST' }
         }
-    );*/
+    );
+    /*
     Place.storedBy = function(here, categories, page, cb) {
         here = new GeoPoint(JSON.parse(here));
         var limit = 10;
@@ -152,6 +152,7 @@ module.exports = function(Place){
             http: { verb: 'POST' }
         }
     );
+    */
     Place.loadMore = function(here, cb) {
         here = new GeoPoint(JSON.parse(here));
         Place.find({
