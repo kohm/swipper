@@ -8,7 +8,7 @@
       "connector": "loopback-connector-mongodb",
       "database": "swipper",
       "username": "admin",
-      "password" : "B8aZNC_wC2fL",
+      "password" : "M-zit1yVxUHB",
       "host": "127.12.191.2",
       "port": "27017"
   }
