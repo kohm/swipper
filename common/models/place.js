@@ -25,7 +25,18 @@ module.exports = function(Place){
     Place.remoteMethod(
         'nearBy',
         {
-            accepts: [{arg: 'northWest', type: 'GeoPoint'},{arg: 'southEast', type: 'GeoPoint'}],
+            accepts: [
+              {
+                arg: 'northWest',
+                type: 'GeoPoint',
+                description: 'ie: {"lat":-27.445056,"lng":-58.993554}'
+              },
+              {
+                arg: 'southEast',
+                type: 'GeoPoint',
+                description:'ie: {"lat":-27.455967,"lng":-58.977632}'
+              }
+            ],
             returns: {arg: 'places', type: [Place], root: true}
         }
     );
@@ -98,15 +109,13 @@ module.exports = function(Place){
     );
 
     /*  LOAD MORE METHOD  */
-    Place.storedBy = function(here, categories, page, cb) {
+    Place.storedBy = function(here, page, cb) {
         here = new GeoPoint(JSON.parse(here));
         var limit = 10;
         page = page || 0;
+
         Place.find({
-            where:{ and:[
-                {Category:{inq:categories}},
-                {Location:{near:here}}
-            ]},
+            where: {Location:{near:here}},
             skip: limit * page,
             limit: limit
         }, cb);
@@ -115,44 +124,24 @@ module.exports = function(Place){
         'storedBy',
         {
             accepts:[
-                {arg: 'here', type: 'GeoPoint', required: true,
-                    description: 'geo location (lng & lat)'},
-                {arg: 'categories', type: 'array', required: true,
-                    description: 'List of categories'},
-                {arg: 'page', type: 'Number',
-                    description: 'number of pages (page size=10)'}
+                {
+                  arg: 'here',
+                  type: 'GeoPoint',
+                  required: true,
+                  description: 'ie: {"lat":-27.453463,"lng":-58.987181}'
+                },
+                {
+                  arg: 'page', type: 'Number',
+                  description: 'number of pages (page size=10)'
+                }
             ],
-            returns: {arg: 'locations', root: true},
-            http: { verb: 'POST' }
+            returns: {
+              arg: 'locations',
+              root: true
+            },
+            http: { verb: 'GET' }
         }
     );
-    /*
-    Place.storedBy = function(here, categories, page, cb) {
-        here = new GeoPoint(JSON.parse(here));
-        var limit = 10;
-        page = page || 0;
-        Place.find({
-            where:{Location:{near:here}},
-            skip: limit * page,
-            limit: limit
-        }, cb);
-    };
-    Place.remoteMethod(
-        'storedBy',
-        {
-            accepts:[
-                {arg: 'here', type: 'GeoPoint', required: true,
-                    description: 'geo location (lng & lat)'},
-                {arg: 'categories', type: 'array', required: true,
-                    description: 'List of categories'},
-                {arg: 'page', type: 'Number',
-                    description: 'number of pages (page size=10)'}
-            ],
-            returns: {arg: 'locations', root: true},
-            http: { verb: 'POST' }
-        }
-    );
-    */
     Place.loadMore = function(here, cb) {
         here = new GeoPoint(JSON.parse(here));
         Place.find({
@@ -172,8 +161,12 @@ module.exports = function(Place){
         'loadMore',
         {
             accepts:[
-                {arg: 'here', type: 'GeoPoint', required: true,
-                    description: 'geo location (lng & lat)'}
+                {
+                  arg: 'here',
+                  type: 'GeoPoint',
+                  required: true,
+                  description: 'geo location (lng & lat)'
+                }
             ],
             returns: {arg: 'locations', root: true},
             http: { verb: 'GET' }
