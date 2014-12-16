@@ -71,6 +71,9 @@ var createPlace = function (location,callback){
         case "Gas Stations":
             location.Category = "Gas";
             break;
+        case "Restaurat":
+            location.Category = "Food";
+            break;
         case "Restaurants":
             location.Category = "Food";
     }
