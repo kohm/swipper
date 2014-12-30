@@ -4,10 +4,7 @@ var Place = app.models.place;
 
 var request = require("request");
 //var url = "https://drive.google.com/uc?export=download&id=0B7dv4nAWOUhtTW9qVXFFaGdzWUE"; // 17/11/2014 Arg
-//var url = "https://drive.google.com/uc?export=download&id=0B7dv4nAWOUhtOVFleTlJX2pZS2s"; // 16/12/2014 Arg + Uru
-var url = "https://drive.google.com/uc?export=download&id=0B7dv4nAWOUhtS1Z5UktzLTlqWnM"; // 30/12/2014 Arg + Uru + CF
-
-
+var url = "https://drive.google.com/uc?export=download&id=0B7dv4nAWOUhtYm5Ebl92M2hqY00"; // 16/12/2014 Arg + Uru
 
 var readJson = function(callback){
     request({
@@ -71,13 +68,18 @@ var createPlace = function (location,callback){
         case "Lodging Small":
             location.Category = "Lodging";
             break;
+        case "Hotel":
+            location.Category = "Lodging";
+            break;
+        case "Transporte":
+            location.Category = "Car Rental";
+            break;
         case "Gas Stations":
             location.Category = "Gas";
             break;
-        case "Restaurat":
-            location.Category = "Food";
-            break;
         case "Restaurants":
+            location.Category = "Food";
+        case "Restaurant":
             location.Category = "Food";
     }
     Place.create({
