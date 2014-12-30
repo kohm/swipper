@@ -79,8 +79,10 @@ var createPlace = function (location,callback){
             break;
         case "Restaurants":
             location.Category = "Food";
+            break;
         case "Restaurant":
             location.Category = "Food";
+            break;
     }
     Place.create({
         "Name": location.Name,
