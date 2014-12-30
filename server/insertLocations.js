@@ -4,7 +4,10 @@ var Place = app.models.place;
 
 var request = require("request");
 //var url = "https://drive.google.com/uc?export=download&id=0B7dv4nAWOUhtTW9qVXFFaGdzWUE"; // 17/11/2014 Arg
-var url = "https://drive.google.com/uc?export=download&id=0B7dv4nAWOUhtOVFleTlJX2pZS2s"; // 16/12/2014 Arg + Uru
+//var url = "https://drive.google.com/uc?export=download&id=0B7dv4nAWOUhtOVFleTlJX2pZS2s"; // 16/12/2014 Arg + Uru
+var url = "https://drive.google.com/uc?export=download&id=0B7dv4nAWOUhtS1Z5UktzLTlqWnM"; // 30/12/2014 Arg + Uru + CF
+
+
 
 var readJson = function(callback){
     request({
