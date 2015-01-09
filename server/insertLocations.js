@@ -54,7 +54,33 @@ var normalize = function(collection) {
 };
 dataSource.automigrate('place', function (err){
     readJson(function(data){
-        locations = data;
+        
+        /** FUNCION QUE ELIMINA LOS LUGARES CON COORDENADAS REPETIDAS **/
+        function arrUnq (db){
+            var dbLength = db.length;
+            console.log(db[0]);
+            console.log(db[0].Location);
+            console.log(db[0].Location[0]);
+            var cleaned = [];
+            var cant = 0;
+            for (var i = 0; i < dbLength; i++){
+                var noRepeated = true;
+                //console.log(JSON.parse(db[i].Location).lat);
+                for (var j = 0; j < dbLength; j++){
+                    if ( (JSON.parse(db[i].Location).lat === JSON.parse(db[j].Location).lat) && (JSON.parse(db[i].Location).lng === JSON.parse(db[j].Location).lng) && (i != j)){
+                        noRepeated = false;
+                    }
+                }
+                if (noRepeated){
+                    cleaned.push(db[i]);
+                    cant++;
+                }
+            }
+            console.log((dbLength - cant) + " fueron eliminados");
+            return cleaned;
+        }
+        locations = arrUnq(data);
+        
         normalize(locations);
         locationCount = locations.length;
         processLocation(locations.shift(), function() {
