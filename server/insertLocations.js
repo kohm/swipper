@@ -57,6 +57,7 @@ dataSource.automigrate('place', function (err){
         
         /** FUNCION QUE ELIMINA LOS LUGARES CON COORDENADAS REPETIDAS **/
         function arrUnq (db){
+            
             var dbLength = db.length;
             console.log(db[0]);
             console.log(db[0].Location);
