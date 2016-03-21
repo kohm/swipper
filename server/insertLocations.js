@@ -82,7 +82,6 @@ dataSource.automigrate('place', function (err){
             return cleaned;
         }
         locations = arrUnq(data);
-        
         normalize(locations);
         locationCount = locations.length;
         processLocation(locations.shift(), function() {
