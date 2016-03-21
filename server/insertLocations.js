@@ -5,7 +5,8 @@ var Place = app.models.place;
 var request = require("request");
 //var url = "https://drive.google.com/uc?export=download&id=0B7dv4nAWOUhtTW9qVXFFaGdzWUE"; // 17/11/2014 Arg
 //var url = "https://drive.google.com/uc?export=download&id=0B7dv4nAWOUhtYm5Ebl92M2hqY00"; // 16/12/2014 Arg + Uru well formed
-var url = "https://drive.google.com/uc?export=download&id=0B7dv4nAWOUhtelFnZWE0WkFvSFE"; // 16/12/2014 Arg + Uru + world
+//var url = "https://drive.google.com/uc?export=download&id=0B7dv4nAWOUhtelFnZWE0WkFvSFE"; // 16/12/2014 Arg + Uru + world
+var url = "https://drive.google.com/uc?export=download&id=0B7dv4nAWOUhtVkF5bUY3eUdKV0U"; // 16/12/2014 Arg + Uru + world + Esp (solicitud de Migue para los chicos de Madrid Globant)
 
 
 var readJson = function(callback){
